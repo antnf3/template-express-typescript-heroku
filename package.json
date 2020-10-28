@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node dist/bin/www.js",
-    "postinstall": "tsc",
-    "dev:watch": "nodemon --watch src --delay 1 --exec ts-node bin/www.ts"
+    "postinstall": "tsc && mv -i -v src/public dist/ && mv -i -v src/views dist/ && rm -v -rf src",
+    "watch:dev": "nodemon --watch src --delay 1 --exec ts-node src/bin/www.ts"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
