@@ -1,10 +1,14 @@
 {
-  "name": "mail-api-server",
-  "version": "0.0.0",
+  "name": "template-express-typescript-heroku",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node dist/bin/www.js",
-    "postinstall": "tsc && mv -i -v src/public dist/ && mv -i -v src/views dist/ && rm -v -rf src",
+    "postinstall": "tsc && yarn copy:public && yarn copy:views",
+    "copy:public": "cp -r -v src/public dist/",
+    "copy:views": "cp -r -v src/views dist/",
+    "move:public": "mv -i -v src/public dist/",
+    "remove:src":"rm -v -rf src",
     "watch:dev": "nodemon --watch src --delay 1 --exec ts-node src/bin/www.ts"
   },
   "dependencies": {
