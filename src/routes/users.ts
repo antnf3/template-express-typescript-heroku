@@ -1,5 +1,5 @@
 import express, { Request, Response, NextFunction } from "express";
-import { users } from "../controllers/users";
+import { users } from "../controllers/usersController";
 const router = express.Router();
 
 /* GET users listing. */
