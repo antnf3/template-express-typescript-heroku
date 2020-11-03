@@ -1,9 +1,8 @@
 import express, { Request, Response, NextFunction } from "express";
+import { users } from "../controllers/users";
 const router = express.Router();
 
 /* GET users listing. */
-router.get("/", function (req: Request, res: Response, next: NextFunction) {
-  res.send("respond with a resource");
-});
+router.get("/", users);
 
 export default router;
