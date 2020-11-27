@@ -3,22 +3,26 @@ import express, { Request, Response, NextFunction } from "express";
 import path from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
+import helmet from "helmet";
 
 import indexRouter from "./routes";
 import usersRouter from "./routes/users";
-
+import cors from "cors";
 const app = express();
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
+app.use(helmet());
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+// app.use(cors({ origin: "http://localhost:4000" }));
+const options = { origin: "http://localhost:4000" };
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 
