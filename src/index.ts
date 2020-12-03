@@ -7,7 +7,9 @@ import helmet from "helmet";
 
 import indexRouter from "./routes";
 import usersRouter from "./routes/users";
-import cors from "cors";
+import session from "express-session";
+import passport from "passport";
+import passConfig from "./passport";
 const app = express();
 
 // view engine setup - test-branch
@@ -21,8 +23,18 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-// app.use(cors({ origin: "http://localhost:4000" }));
-const options = { origin: "http://localhost:4000" };
+app.use(
+  session({
+    secret: `@#@$MYSIGN#@$#$`,
+    resave: false,
+    saveUninitialized: true,
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+// passportConfig.config();
+passConfig(passport);
+
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 

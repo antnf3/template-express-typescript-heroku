@@ -2,10 +2,21 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %> typescript Heroku</p>
+    <form action="users/login" method="post">
+      <input type="text" name="id" id="" />
+      <input type="text" name="pwd" id="" />
+      <input type="submit" name="" id="" value="login" />
+    </form>
   </body>
+  <script>
+    const _onSubmit = (e) => {
+      e.preventDefault();
+      alert("aaa");
+    };
+  </script>
 </html>

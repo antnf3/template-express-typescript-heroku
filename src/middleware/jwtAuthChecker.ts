@@ -12,7 +12,7 @@ const jwtAuthChecker = (req: Request, res: Response, next: NextFunction) => {
   if (req.headers.authorization) {
     console.log(req.headers.authorization);
     const token = req.headers.authorization.split(`Bearer `)[1];
-    jwt.verify(token, "", (err) => {
+    jwt.verify(token, "jwt-secret-key", (err) => {
       if (err) {
         res.status(401).json({ error: `token error` });
       } else {
