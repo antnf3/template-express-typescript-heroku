@@ -7,6 +7,7 @@ import helmet from "helmet";
 
 import indexRouter from "./routes";
 import usersRouter from "./routes/users";
+import apiRouter from "./routes/api";
 import session from "express-session";
 import passport from "passport";
 import passConfig from "./passport";
@@ -37,6 +38,7 @@ passConfig(passport);
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+app.use("/api", apiRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
